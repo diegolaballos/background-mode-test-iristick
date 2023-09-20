@@ -7,10 +7,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.backgroundmodetest.ui.theme.BackgroundModeTestTheme
+import com.iristick.sdk.IristickSDK
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,25 +21,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Text("Hi I'm testing the background mode")
                 }
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        // Adding null to the lifecycle so the window does not close when the activity is paused
+        // background mode should keep showing the window
+        IristickSDK.addWindow(null) { MainWindow() }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    BackgroundModeTestTheme {
-        Greeting("Android")
+        // Request a background lock so glasses keep working while app is inactive. Do not care about
+        // releasing the lock
+        IristickSDK.acquireBackgroundLock()
     }
 }
