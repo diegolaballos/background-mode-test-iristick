@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+  <info organisation="com.iristick.android" module="iristick-sdk-trial" revision="2.4" status="release" publication="20230612144853"/>
+  <publications>
+    <artifact name="iristick-sdk-trial" type="aar" ext="aar"/>
+  </publications>
+  <dependencies>
+    <dependency org="androidx.annotation" name="annotation" rev="1.5.0"/>
+    <dependency org="androidx.lifecycle" name="lifecycle-runtime" rev="2.5.1"/>
+  </dependencies>
+</ivy-module>
